@@ -176,14 +176,6 @@ class Ogr2ogr implements PromiseLike<Result> {
       extname: this.outputExt,
     }
 
-    if (/^geojson$/i.test(this.outputFormat)) {
-      try {
-        res.data = JSON.parse(stdout)
-      } catch (err) {
-        // ignore error
-      }
-    }
-
     if (!this.customDestination && this.outputPath !== vsiStdOut) {
       if (this.outputExt === ".zip") {
         res.stream = this.createZipStream(this.outputPath)
